@@ -1,4 +1,4 @@
-name: Release
+name: Build
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - 'v*'
 
 jobs:
-  release:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,9 +15,8 @@ jobs:
           node-version: '18'
       - run: npm install
       - run: npx electron-builder --linux deb --publish never
-      - name: Create Release
-        uses: softprops/action-gh-release@v1
+      - name: Upload .deb as artifact
+        uses: actions/upload-artifact@v3
         with:
-          files: dist/*.deb
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: github-contributions-deb
+          path: dist/*.deb
