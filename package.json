@@ -5,6 +5,9 @@
   "scripts": {
     "start": "electron . --no-sandbox",
     "build": "electron-builder",
+    "build:deb": "electron-builder --linux deb",
+    "build:appimage": "electron-builder --linux AppImage",
+    "release": "electron-builder --publish always",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,10 +31,31 @@
   "build": {
     "appId": "com.github-contributions.app",
     "icon": "icon.png",
+    "files": [
+      "main.js",
+      "renderer.js",
+      "index.html",
+      "icon.png",
+      "package.json"
+    ],
     "linux": {
-      "target": "deb",
+      "target": [
+        {
+          "target": "deb",
+          "arch": ["x64"]
+        },
+        {
+          "target": "AppImage",
+          "arch": ["x64"]
+        }
+      ],
       "category": "Utility",
       "synopsis": "GitHub Contributions Tracker"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "mohammad-hassani",
+      "repo": "github-contributions"
     }
   }
 }
