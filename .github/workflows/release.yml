@@ -14,10 +14,8 @@ jobs:
         with:
           node-version: '18'
       - run: npm install
-      - run: npm run build:deb
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload .deb to GitHub Release
+      - run: npx electron-builder --linux deb --publish never
+      - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           files: dist/*.deb
