@@ -1,0 +1,37 @@
+{
+  "name": "github-contributions",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron . --no-sandbox",
+    "build": "electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammad-hassani/github-contributions.git"
+  },
+  "keywords": [],
+  "author": "Mohammad Hassani <hasani9821.mh@gmail.com>",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mohammad-hassani/github-contributions/issues"
+  },
+  "homepage": "https://github.com/mohammad-hassani/github-contributions#readme",
+  "description": "GitHub Contributions Tracker - A minimal desktop app to track your GitHub contributions",
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "icon": "icon.png",
+  "build": {
+    "appId": "com.github-contributions.app",
+    "icon": "icon.png",
+    "linux": {
+      "target": "deb",
+      "category": "Utility",
+      "synopsis": "GitHub Contributions Tracker"
+    }
+  }
+}

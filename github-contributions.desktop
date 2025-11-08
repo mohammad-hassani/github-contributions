@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GitHub Contributions
+Comment=GitHub Contributions Tracker
+Exec=/usr/bin/github-contributions
+Icon=/usr/share/icons/github-contributions.png
+Type=Application
+Categories=Utility;Development;
+StartupNotify=true
+StartupWMClass=GitHub Contributions

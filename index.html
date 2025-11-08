@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Contributions</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 5px; border-radius: 10px; background-color: rgba(255, 255, 255, 0); }
+        .settings { margin-bottom: 5px; -webkit-app-region: no-drag; background-color: rgba(255, 255, 255, 0.9); padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .settings label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .settings input, .settings select { width: 100%; padding: 5px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 3px; }
+        .settings button { padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; }
+        .settings button:hover { background-color: #0056b3; }
+        .graph { display: grid; grid-template-columns: repeat(53, 10px); grid-template-rows: repeat(7, 10px); gap: 2px; grid-auto-flow: column; }
+        .day { width: 10px; height: 10px; border-radius: 2px; }
+        .level-0 { background-color: #ebedf0; }
+        .level-1 { background-color: #9be9a8; }
+        .level-2 { background-color: #40c463; }
+        .level-3 { background-color: #30a14e; }
+        .level-4 { background-color: #216e39; }
+        .dark { background-color: rgba(13, 17, 23, 0.8); color: white; }
+        .dark .level-0 { background-color: #161b22; }
+        .dark .settings { background-color: rgba(43, 43, 43, 1); }
+        .dark .settings input, .dark .settings select { background-color: #2b2b2b; color: white; border-color: #555; width: 300px; align-self: center;}
+        .dark .settings button { background-color: #007bff; }
+        #year-label { margin-bottom: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="settings" id="settings-panel" style="display: none;">
+        <label>Username: <input type="text" id="username"></label>
+        <label>Token (create a simple token in https://github.com/settings/tokens with no scope): <input type="password" id="token"></label>
+        <label>Theme: <select id="theme"><option>Light</option><option>Dark</option></select></label>
+        <button id="save">Save</button>
+    </div>
+    <div id="year-label"></div>
+    <div id="graph" class="graph"></div>
+    <script src="renderer.js"></script>
+</body>
+</html>
