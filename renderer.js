@@ -61,8 +61,28 @@ function applyTheme() {
     document.body.style.backgroundColor = settings.theme === 'Dark' ? 'rgba(43, 43, 43, 0)' : 'rgba(255, 255, 255, 0)';
 }
 
+function checkOnlineStatus() {
+    return navigator.onLine;
+}
+
+function showMessage(message, type = 'info') {
+    const graph = document.getElementById('graph');
+    const yearLabel = document.getElementById('year-label');
+    graph.innerHTML = '<div style="text-align: right; width: 400px ; color: #81ffe4ff;">GitHub contribution info!</div>';
+    yearLabel.innerHTML = `<div style="text-align: center; color: ${type === 'error' ? '#ff6b6b' : '#666'};">${message}</div>`;
+}
+
 function fetchContributions() {
-    if (!settings.username) return;
+    if (!settings.username) {
+        showMessage('Please go to Settings and add your username and token', 'error');
+        return;
+    }
+    
+    if (!checkOnlineStatus()) {
+        showMessage('You are offline. Please check your internet connection', 'error');
+        return;
+    }
+    
     const query = `
     query($userName:String!) {
       user(login: $userName) {
@@ -86,7 +106,10 @@ function fetchContributions() {
         headers,
         body: JSON.stringify({ query, variables: { userName: settings.username } })
     })
-    .then(res => res.json())
+    .then(res => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+    })
     .then(data => {
         console.log('API Response:', data);
         const calendar = data.data?.user?.contributionsCollection?.contributionCalendar;
@@ -95,10 +118,17 @@ function fetchContributions() {
             renderGraph(parseCalendar(calendar));
         } else {
             console.log('No calendar data');
-            alert('No contribution data found. Check username and token.');
+            showMessage('No contribution data found. Check username and token.', 'error');
         }
     })
-    .catch(err => console.error('Fetch error:', err));
+    .catch(err => {
+        console.error('Fetch error:', err);
+        if (!checkOnlineStatus()) {
+            showMessage('You are offline. Please check your internet connection', 'error');
+        } else {
+            showMessage('Failed to fetch contributions. Please check your settings.', 'error');
+        }
+    });
 }
 
 function parseCalendar(calendar) {
@@ -144,6 +174,17 @@ function getLevel(count) {
     if (count <= 9) return 3;
     return 4;
 }
+
+// Listen for online/offline events
+window.addEventListener('online', () => {
+    if (settings.username) {
+        fetchContributions();
+    }
+});
+
+window.addEventListener('offline', () => {
+    showMessage('You are offline. Please check your internet connection', 'error');
+});
 
 // Load settings on start
 const saved = localStorage.getItem('settings');

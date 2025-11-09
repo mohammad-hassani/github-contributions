@@ -31,6 +31,13 @@ ipcMain.on('close-window', () => {
 ipcMain.on('show-context-menu', (event) => {
   const menu = Menu.buildFromTemplate([
     {
+      label: 'Open',
+      click: () => {
+        win.show();
+        win.focus();
+      }
+    },
+    {
       label: 'Settings',
       click: () => event.sender.send('toggle-settings')
     },
@@ -90,6 +97,13 @@ function createWindow() {
   tray.setToolTip('GitHub Contributions');
 
   const trayMenu = Menu.buildFromTemplate([
+    {
+      label: 'Open',
+      click: () => {
+        win.show();
+        win.focus();
+      }
+    },
     {
       label: 'Settings',
       click: () => win.webContents.send('toggle-settings')
