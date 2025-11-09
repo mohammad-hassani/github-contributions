@@ -153,7 +153,17 @@ function renderGraph(contributions) {
     let currentDate = new Date(startDate);
     const year = today.getFullYear();
     document.getElementById('year-label').textContent = `Contributions in ${year}`;
-    for (let week = 0; week < 53; week++) {
+    
+    // Calculate how many weeks we need to include today
+    const endDate = new Date(today);
+    // Move to Saturday of the current week to ensure we include today
+    const currentDayOfWeek = today.getDay();
+    endDate.setDate(today.getDate() + (6 - currentDayOfWeek));
+    
+    const totalDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
+    const totalWeeks = Math.ceil(totalDays / 7);
+    
+    for (let week = 0; week < totalWeeks; week++) {
         for (let day = 0; day < 7; day++) {
             const dateStr = currentDate.toISOString().split('T')[0];
             const count = contributions[dateStr] || 0;
