@@ -1,6 +1,6 @@
 {
   "name": "github-contributions",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "main": "main.js",
   "scripts": {
     "start": "electron . --no-sandbox",
@@ -14,15 +14,41 @@
     "type": "git",
     "url": "git+https://github.com/mohammad-hassani/github-contributions.git"
   },
-  "keywords": [],
-  "author": "Mohammad Hassani <hasani9821.mh@gmail.com>",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/mohammad-hassani/github-contributions/issues"
+  "keywords": [
+    "github",
+    "contributions",
+    "tracker",
+    "desktop",
+    "electron",
+    "productivity",
+    "developer-tools",
+    "github-graph",
+    "contribution-calendar",
+    "github-stats",
+    "open-source",
+    "development",
+    "utility",
+    "linux",
+    "appimage",
+    "deb"
+  ],
+  "author": {
+    "name": "Mohammad Hassani",
+    "email": "hasani9821.mh@gmail.com",
+    "url": "https://github.com/mohammad-hassani"
   },
+  "license": "ISC",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "type": "commonjs",
   "homepage": "https://github.com/mohammad-hassani/github-contributions#readme",
-  "description": "GitHub Contributions Tracker - A minimal desktop app to track your GitHub contributions",
+  "bugs": {
+    "url": "https://github.com/mohammad-hassani/github-contributions/issues",
+    "email": "hasani9821.mh@gmail.com"
+  },
+  "description": "A beautiful minimal desktop app to track your GitHub contributions in real-time. Displays your GitHub contribution graph on your desktop with dark/light themes, system tray integration, and offline support.",
   "devDependencies": {
     "electron": "^33.0.0",
     "electron-builder": "^26.0.0"
@@ -59,12 +85,19 @@
         }
       ],
       "category": "Utility",
-      "synopsis": "GitHub Contributions Tracker"
+      "synopsis": "GitHub Contributions Tracker - Real-time GitHub contribution graph on your desktop",
+      "desktop": {
+        "Name": "GitHub Contributions Tracker",
+        "Comment": "Track your GitHub contributions with a beautiful desktop widget",
+        "Keywords": "github;contributions;tracker;productivity;developer;",
+        "StartupWMClass": "github-contributions"
+      }
     },
     "publish": {
       "provider": "github",
       "owner": "mohammad-hassani",
-      "repo": "github-contributions"
+      "repo": "github-contributions",
+      "releaseType": "release"
     }
   }
 }
