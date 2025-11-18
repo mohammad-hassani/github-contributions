@@ -66,7 +66,7 @@ npm start
   <img src="https://github.com/mohammad-hassani/github-contributions/raw/main/icon.png" alt="App Icon" width="120">
 </div>
 
-*The app displays your contribution graph in a compact, draggable window that stays on top of other applications.*
+*The app displays your contribution graph in a compact, draggable window.*
 
 ## 🎮 Usage
 
