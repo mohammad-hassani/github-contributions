@@ -85,13 +85,7 @@
         }
       ],
       "category": "Utility",
-      "synopsis": "GitHub Contributions Tracker - Real-time GitHub contribution graph on your desktop",
-      "desktop": {
-        "Name": "GitHub Contributions Tracker",
-        "Comment": "Track your GitHub contributions with a beautiful desktop widget",
-        "Keywords": "github;contributions;tracker;productivity;developer;",
-        "StartupWMClass": "github-contributions"
-      }
+      "synopsis": "GitHub Contributions Tracker - Real-time GitHub contribution graph on your desktop"
     },
     "publish": {
       "provider": "github",
